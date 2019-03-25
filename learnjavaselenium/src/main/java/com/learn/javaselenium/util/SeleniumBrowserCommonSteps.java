@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -37,10 +36,10 @@ public class SeleniumBrowserCommonSteps
 			if(driver==null){
 //				FirefoxOptions options = new FirefoxOptions();
 //				options.setBinary("C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");
-//				System.setProperty("webdriver.gecko.driver", Driverpath+"\\geckodriver.exe");
-				System.setProperty("webdriver.gecko.driver","C:\\Cucumber-selenium\\geckodriver-v0.19.0-win32\\geckodriver.exe");
-//				DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-				driver = new FirefoxDriver();
+				System.setProperty("webdriver.gecko.driver", Driverpath+"\\geckodriver.exe");
+//				System.setProperty("webdriver.gecko.driver","C:\\Cucumber-selenium\\geckodriver-v0.19.0-win32\\geckodriver.exe");
+				DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+				driver = new FirefoxDriver(capabilities);
 			}
 			break;
 		case "IE":
@@ -82,7 +81,7 @@ public class SeleniumBrowserCommonSteps
 	
 	public void closeAllDriverInstance(){
 		getDriver().close();
-		driv.get(null);
+		driv.get();
 	}
 	public static void waitSeconds(int seconds){
 		try{
@@ -101,4 +100,4 @@ public class SeleniumBrowserCommonSteps
 		SeleniumBrowserCommonSteps.browser = browser;
 	}
 }
-/target/
+
