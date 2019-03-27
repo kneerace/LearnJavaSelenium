@@ -1,5 +1,6 @@
 package com.demoaut.newtours.StepDef;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.learn.javaselenium.util.SeleniumDriverCommonStep;
@@ -12,20 +13,19 @@ public class ValidateUserNamePasswordStepDef extends SeleniumDriverCommonStep
 {
 	
 	SeleniumDriverCommonStep stepdef = new SeleniumDriverCommonStep();
-	WebDriver driv= stepdef.selectedDriver("Chrome");
-	
+	WebDriver driv= stepdef.selectedDriver("Chrome");	
 	@Given ("^User log into newtours site \"([^\"]*)\"$")
 	public void access_site(String site) throws InterruptedException{
 		// code to access driver and pass site name
-		
 		try{
 			System.out.println("****Accessing site via Chrome Browser****");
 			driv.get(site);
+			driv.manage().window().maximize();
 			System.out.println("Site Details: "+ driv.getCurrentUrl());
-			stepdef.waitSeconds(3);
+			stepdef.waitSeconds(2);
 		}
 		catch(Exception e){ System.out.println(e.getMessage());
-		((SeleniumDriverCommonStep) driv).closeAllDriver();}
+		stepdef.closeAllDriver();}
 		
 	}
 	
@@ -35,11 +35,11 @@ public class ValidateUserNamePasswordStepDef extends SeleniumDriverCommonStep
 		try{System.out.println("****Validating landing page****");
 			if (driv.getPageSource() != null){
 				System.out.println("landing page found");
-				stepdef.waitSeconds(3);}
+				stepdef.waitSeconds(2);}
 			else {System.out.println("landing page not found");}
 		}
 		catch(Exception e ){ System.out.println(e.getMessage());
-		((SeleniumDriverCommonStep) driv).closeAllDriver();}
+				stepdef.closeAllDriver();}
 	}
 	
 	@Then ("^User should see \"([^\"]*)\" page title$")
@@ -49,14 +49,26 @@ public class ValidateUserNamePasswordStepDef extends SeleniumDriverCommonStep
 		try{
 			System.out.println("****Accessing Page Title****");
 			System.out.println(driv.getTitle());
-			stepdef.waitSeconds(3);
+			stepdef.waitSeconds(2);
 		}
 		catch(Exception e ){System.out.println(e.getMessage());
 		}
 	}
+	
+	@Then ("^User checks Username label is present$")
+	public void user_checks_username_label_is_present() throws InterruptedException{
+//		System.out.println(driv.findElement(By.cssSelector("User")).getText());
+		stepdef.waitSeconds(2);
+	}
+	@Then ("^User checks input box for Username is present$")
+	public void user_checks_input_box_for_Username_is_present() throws InterruptedException{
+		System.out.println(driv.findElement(By.xpath("//[@name='userName']")).getClass());
+		stepdef.waitSeconds(2);
+	}
+	
 		@Then ("^User exit the browser$")
 	public void user_exist_the_browser() throws InterruptedException{
 			stepdef.closeAllDriver();
-	}
+		}
 	
 }

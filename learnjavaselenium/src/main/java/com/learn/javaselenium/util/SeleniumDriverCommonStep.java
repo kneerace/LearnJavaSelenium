@@ -46,7 +46,7 @@ public class SeleniumDriverCommonStep
 	}
 	public void closeAllDriver(){
 		driver.close();
-//		driver.quit();
+		driver = null;
 	}
 	
 	public void waitSeconds(int seconds){

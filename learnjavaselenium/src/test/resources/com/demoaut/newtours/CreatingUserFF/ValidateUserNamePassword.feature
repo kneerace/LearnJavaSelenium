@@ -8,13 +8,14 @@ When User lands into homepage
 Then User should see "Welcome: Mercury Tours" page title
 And User exit the browser
 
-#Scenario: Validate User name label and input box
-#Given User log into newtours site "http://newtours.demoaut.com/"
-#When User lands into homepage
-#Then User checks Username label is present 
-#And User checks input box for Username is present
-#And User exit the browser
-#
+
+Scenario: Validate User name label and input box
+Given User log into newtours site "http://newtours.demoaut.com/"
+When User lands into homepage
+Then User checks Username label is present 
+And User checks input box for Username is present
+And User exit the browser
+
 #Scenario: Validate User password label and input box
 #Given User log into newtours site "http://newtours.demoaut.com/"
 #When User lands into homepage
