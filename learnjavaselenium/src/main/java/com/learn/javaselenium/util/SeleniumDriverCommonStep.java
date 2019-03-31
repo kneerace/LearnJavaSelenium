@@ -46,7 +46,12 @@ public class SeleniumDriverCommonStep
 	}
 	public void closeAllDriver(){
 		driver.close();
-		driver = null;
+		driver.quit(); 
+//	    webDriver.Close() // Close the browser window that the driver has focus of
+//	    webDriver.Quit() // Calls Dispose()
+//	    webDriver.Dispose() Closes all browser windows and safely ends the session
+
+		if (driver != null)driver = null;
 	}
 	
 	public void waitSeconds(int seconds){
