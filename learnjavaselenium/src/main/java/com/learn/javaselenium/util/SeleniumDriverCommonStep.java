@@ -11,7 +11,7 @@ public class SeleniumDriverCommonStep
 {
 		static WebDriver driver;
 		static String Driverpath = System.getProperty("user.dir")+"\\Drivers\\";
-		
+		static String extent_config = System.getProperty("user.dir")+"\\extent-config.xml";
 	public WebDriver selectedDriver(String browser){
 		
 		switch(browser){
@@ -61,5 +61,18 @@ public class SeleniumDriverCommonStep
 		catch(InterruptedException e){
 			System.out.println(e.getMessage());
 		}
+	}
+	
+	/*** Added 2019-03-31 Niresh Shrestha
+	** Added to read config file for extent reporting utilizing cucumber dashboard feature. 
+	**
+	*/
+	public String getReportConfigPath(){
+//	 String reportConfigPath = properties.getProperty("reportConfigPath");
+//	 if(reportConfigPath!= null) return reportConfigPath;
+//	 else throw new RuntimeException("Report Config Path not specified in the Configuration.properties file for the Key:reportConfigPath");
+//	 
+	 if(extent_config != null) return extent_config;
+	 else throw new RuntimeException("Report Config path not specified in the ");
 	}
 }
